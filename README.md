@@ -5,6 +5,8 @@ Version: 0.0.1
 
 Target: Armazenar documentos enviados e anexados a motorista e/ou veículo para futuras auditorias.
 
+Modifications: Criado estrutura básica para salvar dados via cliente de API REST
+
 ### Repository
 * [repo.spring.io](https://repo.spring.io/ui/native/libs-release)
 
