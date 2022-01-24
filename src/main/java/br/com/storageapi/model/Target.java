@@ -1,10 +1,13 @@
 package br.com.storageapi.model;
 
+import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Lob;
 import javax.persistence.Table;
 
 import lombok.AllArgsConstructor;
@@ -19,7 +22,7 @@ import lombok.Setter;
 @Entity
 @Table
 public class Target {
-    
+
     /**
      * Id auto increment.
      */
@@ -28,21 +31,40 @@ public class Target {
     private Long id;
 
     /**
-     * O  código do veículo que está gravado no banco de dados.
+     * login do usuário solicitante.
      */
-    @Column(name = "target")
-    private String target;
-    
+    @Column(name = "login", nullable = false)
+    private String login;
+
     /**
-     *  O arquivo a ser armazenado.
+     * O código do veículo que está gravado no banco de dados.
      */
-    @Column(name = "document")
-    private String document;
+    @Column(name = "name", nullable = false)
+    private String name;
+
+    /**
+     * O arquivo a ser armazenado.
+     */
+    @Lob
+    @Column(name = "document", columnDefinition = "LONGBLOB", nullable = false)
+    private byte[] document;
 
     /**
      * O arquivo será armazenado na estrutura:
-     *  /stored/target/:target/
+     * /stored/target/:target/
      */
-    @Column(name = "localFile")
+    @Column(name = "localFile", nullable = false)
     private String localFile;
+
+    /**
+     * Registro de criação.
+     */
+    @Column(name = "dtCreate", nullable = false)
+    private Date create;
+
+    /**
+     * Exclusão lógica.
+     */
+    @Column(name = "dtDelete")
+    private Date delete;
 }
